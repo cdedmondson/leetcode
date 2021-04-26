@@ -1,3 +1,28 @@
+// Palindrome Number
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    // Step 1: Check if x is an integer
+        // If not return false
+    if(typeof x !== 'number')
+        return false
+    // Step 2: If integer length is one
+        // return true
+    let originalInteger = String(x);
+    if(originalInteger.length === 1)
+        return true
+    // Step 3: Reverse the integer
+    let reverseInteger = originalInteger.split("").reverse().join("");
+    // Step 4: compare to original
+    if(reverseInteger === originalInteger)
+        return true
+        // If the same return true
+        // Else return false
+    return false;
+};
+
 // Plus One
 /**
  * @param {number[]} digits
