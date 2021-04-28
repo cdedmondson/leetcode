@@ -1,3 +1,51 @@
+// Valid Parentheses
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    let charactersArray = [];
+    let stack = [];
+    let top = 0;
+    let strLength = s.length;
+  
+    if(typeof s !== 'string')
+        return false
+
+    if(strLength <= 1)
+        return false
+  
+    if(strLength % 2 !== 0)
+        return false
+     charactersArray = s.split(""); 
+    stack.push(charactersArray[0])
+    for(let i = 1; i < strLength; i++){
+        switch(stack[top] + charactersArray[i]){
+            case '()':
+                top--;
+                stack.pop();
+                break;
+            case '{}':
+                top--;
+                stack.pop();
+                break;
+            case '[]':
+                top--;
+                stack.pop();
+                break;
+            default:
+                top++;
+                stack.push(charactersArray[i]);
+        }
+    }
+    if(stack.length === 0){
+        return true
+    }else{
+        return false
+    }
+        
+};
+
 // Palindrome Number
 /**
  * @param {number} x
