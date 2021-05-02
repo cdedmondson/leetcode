@@ -1,3 +1,56 @@
+// Longest Palindrome
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestPalindrome = function(s) {
+    let dict = {};
+    let accumulator = 0;
+    let stringLength = s.length;
+    let uniqueCharacters = 0;
+    let noOdds = true;
+    
+    // If length of string is 1 return 1
+    if(stringLength === 1)
+        return 1;
+    
+    // Count all letters that are the same 
+    for (let i = 0; i < stringLength; i++){
+        // If current letter exists in the hashtable
+        // Increase count by one. Else add letter to hashtable with value 1
+        if (dict.hasOwnProperty(s.charAt(i))){
+            dict[s.charAt(i)] += 1;
+        }else{
+            dict[s.charAt(i)] = 1;
+            }
+        }
+    
+    // Iterate over each key value pair
+    for(const key in dict){
+        uniqueCharacters++;
+        // If letter occurs even number of times
+       if(dict[key] % 2 === 0){
+           accumulator += dict[key];
+           // Else letter occurs odd number of times
+       }else{
+           // Only count even occurrences
+           accumulator += dict[key] - 1;
+           noOdds = false;
+       }
+        
+    }
+    
+    // Example 'cc'
+    if (uniqueCharacters === 1 && stringLength % 2 === 0)
+        return accumulator;
+    
+    // If no odd occurrences appear return without incrementing by 1
+    if(noOdds)
+        return accumulator;
+    
+    return accumulator + 1;     
+};
+
 // Valid Parentheses
 /**
  * @param {string} s
