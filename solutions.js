@@ -7,19 +7,19 @@ var isPalindrome = function(s) {
     let alphaNumericString = '';
     let alphaNumeric = /^[0-9a-zA-Z]+$/;
     let endPointer;
-    
+
     if(typeof s !== 'string')
         return false;
   
     let stringLength = s.length;
-    // Step 5: If even 
+
     for(let i = 0; i < stringLength; i++){
         if(s.charAt(i).match(alphaNumeric))
             alphaNumericString += s.charAt(i).toLowerCase();
     }
     
     if(alphaNumericString.length % 2 === 0)
-        alphaNumericString = alphaNumericString.slice(0, Math.trunc(alphaNumericString.length / 2)) + "|" + alphaNumericString.slice(Math.trunc(alphaNumericString.length / 2), alphaNumericString.length);
+        alphaNumericString = alphaNumericString.slice(0, alphaNumericString.length / 2) + "|" + alphaNumericString.slice(alphaNumericString.length / 2, alphaNumericString.length);
    
     endPointer = alphaNumericString.length;
     for (i = 0; i < alphaNumericString.length;  i++){
