@@ -1,3 +1,34 @@
+# Reverse String
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        odd = False
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        # Step 1: Get length of list
+        listLength = len(s)
+        # Step 2: Check if length is odd
+        if(listLength % 2 != 0):
+            odd = True
+        # Step 3: Set 'j' tp last index of list
+        j = listLength - 1
+        # Step 4: Find midrange of even length list
+        temp = (listLength / 2) - 1
+        
+        # Step 5: Iterate over list
+        for i in range(0, listLength):
+            # If odd length list and 'i' is equal to 'j' (i.e. midpoint reached) return list
+            if(odd and i == j):
+                return s
+            # If even length list reaches mid point return list
+            elif(i == temp and j == i + 1):
+                s[i], s[j] = s[j], s[i]
+                return s
+            else:
+                # Swap first character with last and last character with first
+                s[i], s[j] = s[j], s[i]
+                j = j - 1
+
 # Contains Duplicate
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
