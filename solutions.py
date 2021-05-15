@@ -1,3 +1,28 @@
+# Add Digits
+class Solution:
+    
+    def toDigits(self, num: int) -> list:
+        return list(map(int, str(num)))
+
+
+    def addDigits(self,num: int) -> int:
+
+        if num in range(0, 10):
+            return num
+
+
+        digitsList = self.toDigits(num)
+        while True:
+            sum = 0
+            for i in digitsList:
+                sum += i
+
+            if sum in range(0,10):
+                return sum
+
+            digitsList = self.toDigits(sum)
+
+            
 # Reverse String
 class Solution:
     def reverseString(self, s: List[str]) -> None:
